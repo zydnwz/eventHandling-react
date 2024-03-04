@@ -1,0 +1,57 @@
+
+.expenses {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .expense-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .expense-item_description h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .expense-item_price {
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .expense-date {
+    display: flex;
+    flex-direction: column;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 1px solid #2a2a2a;
+    background-color: #ececec;
+    color: white;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .expense-date_month {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .expense-date_year {
+    font-size: 0.75rem;
+    color: #888;
+  }
+  
+  .expense-date_day {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .expense-location {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  

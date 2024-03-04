@@ -1,0 +1,30 @@
+.expense-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.expense-item_description h2 {
+  margin: 0;
+  color: #333;
+}
+
+.expense-item_price {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.expense-item_buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem
+}
