@@ -21,7 +21,8 @@ function Expenses(props) {
     <div className="expenses">
       <ExpenseFilter selectedYear={filteredYear} onChangeFilter={changeYearHandler} />
       {filteredExpenses.length === 0 && <p className="expenses-message">No expenses found.</p>}
-      {filteredExpenses.map((expense) => (
+      {filteredExpenses.length === 1 && <p className="expenses-message">Only single expense here. Please add more...</p>}
+      {filteredExpenses.length > 1 && filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           title={expense.title}
