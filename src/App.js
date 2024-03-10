@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
-import ExpenseForm from './components/Expenses/ExpenseForm';
+import NewExpense from './components/Expenses/NewExpenses';
 import './App.css';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
   return (
     <div>
       <h1>Expense Tracker</h1>
-      <ExpenseForm onSaveExpenseData={addExpenseHandler} />
+      <NewExpense onSaveExpenseData={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
