@@ -1,0 +1,13 @@
+.expense-filter {
+    margin-bottom: 1rem;
+  }
+  
+  .expense-filter label {
+    font-weight: bold;
+  }
+  
+  .expense-filter select {
+    padding: 0.5rem;
+    margin-left: 1rem;
+  }
+  
