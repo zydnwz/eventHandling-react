@@ -1,46 +1,42 @@
-import React, { useState } from 'react';
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/Expenses/NewExpenses';
-import './App.css';
+import React, { useState } from "react";
+import Expenses from "./components/Expenses/Expenses";
+import "./App.css";
 
 function App() {
-  const initialExpenses = [
+  const [expenses, setExpenses] = useState([
     {
-      id: 'el',
-      title: 'Toilet Paper',
+      id: "e1",
+      title: "Toilet Paper",
       amount: 94.12,
-      date: new Date(2020, 7, 14),
-      location: 'Grocery Store'
+      date: new Date(2022, 7, 14),
+      location: "Grocery Store",
     },
     {
-      id: 'e2',
-      title: 'New TV',
+      id: "e2",
+      title: "New TV",
       amount: 799.49,
-      date: new Date(2021, 2, 12),
-      location: 'Electronics Store'
+      date: new Date(2022, 2, 12),
+      location: "Electronics Store",
     },
     {
-      id: 'e3',
-      title: 'Car Insurance',
+      id: "e3",
+      title: "Car Insurance",
       amount: 294.67,
-      date: new Date(2021, 6, 25),
-      location: 'Insurance Company'
+      date: new Date(2022, 6, 25),
+      location: "Insurance Company",
     },
-  ];
-
-  const [expenses, setExpenses] = useState(initialExpenses);
+  ]);
 
   const addExpenseHandler = (expense) => {
-    setExpenses(prevExpenses => {
-      return [...prevExpenses, expense];
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
     });
   };
 
   return (
-    <div>
+    <div className="App">
       <h1>Expense Tracker</h1>
-      <NewExpense onSaveExpenseData={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses items={expenses} onAddExpense={addExpenseHandler} />
     </div>
   );
 }

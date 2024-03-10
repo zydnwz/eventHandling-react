@@ -5,9 +5,14 @@ import './Expenses.css';
 
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const changeYearHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
+  };
+
+  const toggleFormVisibility = () => {
+    setIsFormVisible(prevState => !prevState);
   };
 
   const filteredExpenses = props.items.filter(expense => {
@@ -19,10 +24,16 @@ function Expenses(props) {
 
   return (
     <div className="expenses">
+      <button onClick={toggleFormVisibility}>Add Expenses</button>
       <ExpenseFilter selectedYear={filteredYear} onChangeFilter={changeYearHandler} />
+      {isFormVisible && (
+        <form>
+          {/* Form fields go here */}
+          <button type="submit">Add Expense</button>
+        </form>
+      )}
       {filteredExpenses.length === 0 && <p className="expenses-message">No expenses found.</p>}
-      {filteredExpenses.length === 1 && <p className="expenses-message">Only single expense here. Please add more...</p>}
-      {filteredExpenses.length > 1 && filteredExpenses.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           title={expense.title}
