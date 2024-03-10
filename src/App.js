@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
+import ExpenseForm from './components/Expenses/ExpenseForm';
 import './App.css';
 
 function App() {
-  const expenses = [
+  const initialExpenses = [
     {
       id: 'el',
       title: 'Toilet Paper',
@@ -27,9 +28,18 @@ function App() {
     },
   ];
 
+  const [expenses, setExpenses] = useState(initialExpenses);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses(prevExpenses => {
+      return [...prevExpenses, expense];
+    });
+  };
+
   return (
     <div>
       <h1>Expense Tracker</h1>
+      <ExpenseForm onSaveExpenseData={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
