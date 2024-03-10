@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ExpenseItem from './ExpenseItem';
 import ExpenseFilter from './ExpenseFilter';
+import ExpenseForm from './ExpenseForm';
+import ExpenseChart from './ExpenseChart'; 
 import './Expenses.css';
 
 function Expenses(props) {
@@ -12,10 +14,19 @@ function Expenses(props) {
   };
 
   const toggleFormVisibility = () => {
-    setIsFormVisible(prevState => !prevState);
+    setIsFormVisible((prevState) => !prevState);
   };
 
-  const filteredExpenses = props.items.filter(expense => {
+  const addExpenseHandler = (expense) => {
+    props.onAddExpense(expense);
+    setIsFormVisible(false); 
+  };
+
+  const cancelHandler = () => {
+    setIsFormVisible(false); 
+  };
+
+  const filteredExpenses = props.items.filter((expense) => {
     if (!filteredYear) {
       return true;
     }
@@ -24,15 +35,23 @@ function Expenses(props) {
 
   return (
     <div className="expenses">
-      <button onClick={toggleFormVisibility}>Add Expenses</button>
-      <ExpenseFilter selectedYear={filteredYear} onChangeFilter={changeYearHandler} />
-      {isFormVisible && (
-        <form>
-          {/* Form fields go here */}
-          <button type="submit">Add Expense</button>
-        </form>
+      {!isFormVisible && (
+        <button onClick={toggleFormVisibility}>Add Expense</button>
       )}
-      {filteredExpenses.length === 0 && <p className="expenses-message">No expenses found.</p>}
+      {isFormVisible && (
+        <ExpenseForm
+          onAddExpense={addExpenseHandler}
+          onCancel={cancelHandler}
+        />
+      )}
+      <ExpenseFilter
+        selectedYear={filteredYear}
+        onChangeFilter={changeYearHandler}
+      />
+      <ExpenseChart expenses={filteredExpenses} /> {/* Render ExpenseChart component */}
+      {filteredExpenses.length === 0 && (
+        <p className="expenses-message">No expenses found.</p>
+      )}
       {filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}

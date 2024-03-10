@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import './ExpenseForm.css';
+import React, { useState } from "react";
+import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
-  const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
@@ -24,12 +24,12 @@ function ExpenseForm(props) {
       title: title,
       amount: +amount,
       date: new Date(date),
-      id: Math.random().toString()
+      id: Math.random().toString(),
     };
     props.onAddExpense(expenseData);
-    setTitle('');
-    setAmount('');
-    setDate('');
+    setTitle("");
+    setAmount("");
+    setDate("");
   };
 
   const cancelHandler = () => {
@@ -72,7 +72,9 @@ function ExpenseForm(props) {
       </div>
       <div>
         <button type="submit">Add Expense</button>
-        <button type="button" onClick={cancelHandler}>Cancel</button>
+        <button type="button" onClick={cancelHandler}>
+          Cancel
+        </button>
       </div>
     </form>
   );
